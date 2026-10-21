@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>qbt-rules</Name>
+  <Repository>ghcr.io/andronics/qbt-rules:latest</Repository>
+  <Registry>https://github.com/andronics/qbt-rules/pkgs/container/qbt-rules</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/andronics/qbt-rules/discussions</Support>
+  <Project>https://github.com/andronics/qbt-rules</Project>
+  <ReadMe>https://github.com/andronics/qbt-rules/wiki</ReadMe>
+  <Overview>Rules engine for qBittorrent. Write declarative YAML rules that tag, categorise, pause, throttle, force-seed or delete torrents based on their state, files, trackers, peers and more, triggered by qBittorrent events, a schedule, or an HTTP call.&#xD;
+&#xD;
+[b]Starts in dry-run mode:[/b] it only logs what it would do until you set Dry run to false. The default rules.yml (created in your appdata folder on first start) includes rules that delete torrents, so review it first.&#xD;
+&#xD;
+Rules live in rules.yml in the appdata folder; the dashboard on the WebUI port shows jobs and rules (log in with the API key). Documentation: https://github.com/andronics/qbt-rules/wiki</Overview>
+  <Changes/>
+  <Category>Downloaders: Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:5000]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/andronics/unraid-templates/main/qbt-rules.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/andronics/unraid-templates/main/icons/qbt-rules.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>qBittorrent with its Web UI enabled, reachable from this container.</Requires>
+  <Config Name="WebUI / API port" Target="5000" Default="5000" Mode="tcp" Description="Dashboard and HTTP API (e.g. for qBittorrent's 'Run external program' webhook)." Type="Port" Display="always" Required="true" Mask="false">5000</Config>
+  <Config Name="Appdata" Target="/config" Default="/mnt/user/appdata/qbt-rules" Mode="rw" Description="config.yml, rules.yml, the job database and the log. Defaults are created here on first start." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/qbt-rules</Config>
+  <Config Name="qBittorrent URL" Target="QBT_RULES_QBITTORRENT_HOST" Default="" Mode="" Description="qBittorrent Web UI address, e.g. http://192.168.1.10:8080" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="qBittorrent username" Target="QBT_RULES_QBITTORRENT_USERNAME" Default="admin" Mode="" Description="qBittorrent Web UI username." Type="Variable" Display="always" Required="true" Mask="false">admin</Config>
+  <Config Name="qBittorrent password" Target="QBT_RULES_QBITTORRENT_PASSWORD" Default="" Mode="" Description="qBittorrent Web UI password." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="API key" Target="QBT_RULES_SERVER_API_KEY" Default="" Mode="" Description="Secret for the HTTP API and dashboard login. Use a long random string." Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="Dry run" Target="QBT_RULES_DRY_RUN" Default="true|false" Mode="" Description="true: only log what rules would do. Set to false once you've reviewed rules.yml." Type="Variable" Display="always" Required="true" Mask="false">true</Config>
+  <Config Name="Log level" Target="QBT_RULES_LOGGING_LEVEL" Default="INFO|DEBUG|WARNING|ERROR" Mode="" Description="DEBUG logs every rule evaluation and grows the log quickly." Type="Variable" Display="advanced" Required="false" Mask="false">INFO</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="User the container runs as; owns the appdata folder." Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Group the container runs as." Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+</Container>
