@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>qbt-rules</Name>
-  <Repository>ghcr.io/andronics/qbt-rules:latest</Repository>
+  <Repository>ghcr.io/andronics/qbt-rules:0.11</Repository>
   <Registry>https://github.com/andronics/qbt-rules/pkgs/container/qbt-rules</Registry>
   <Network>bridge</Network>
   <MyIP/>
@@ -23,7 +23,8 @@ Your rules live in rules.yml in the State folder, which must be writable: the da
 Documentation: https://github.com/andronics/qbt-rules/wiki</Overview>
   <Changes>### qbt-rules 0.11&#xD;
 - Two paths replace /config: Config (/etc/qbt-rules, config.yaml, read-only) and State (/var/lib/qbt-rules, rules.yml and the job database, writable). Copy your files across before updating: https://github.com/andronics/qbt-rules/wiki/Upgrading-to-0.11&#xD;
-- New qBittorrent hook line: docker exec qbt-rules qbt-rules execute --context torrent-imported --hash "%I"</Changes>
+- New qBittorrent hook line: docker exec qbt-rules qbt-rules execute --context torrent-imported --hash "%I"&#xD;
+- The image is pinned to the 0.11 series (:0.11): 0.11.x fixes arrive automatically; a later breaking release needs this template updated.</Changes>
   <Category>Downloaders: Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:5000]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/andronics/unraid-templates/main/qbt-rules.xml</TemplateURL>
